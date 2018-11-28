@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jelly.ssm.dao.ArticleDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jelly.ssm.entity.Article">
+        <id column="article_id" property="articleId" />
+        <result column="article_title" property="articleTitle" />
+        <result column="article_short_title" property="articleShortTitle" />
+        <result column="article_category" property="articleCategory" />
+        <result column="column_category" property="columnCategory" />
+        <result column="article_order" property="articleOrder" />
+        <result column="article_keywords" property="articleKeywords" />
+        <result column="article_summary" property="articleSummary" />
+        <result column="article_author" property="articleAuthor" />
+        <result column="article_source" property="articleSource" />
+        <result column="comment_enabled" property="commentEnabled" />
+        <result column="comment_start" property="commentStart" />
+        <result column="comment_end" property="commentEnd" />
+        <result column="article_logo" property="articleLogo" />
+        <result column="article_content" property="articleContent" />
+        <result column="article_status" property="articleStatus" />
+        <result column="article_addtime" property="articleAddtime" />
+        <result column="article_subtime" property="articleSubtime" />
+        <result column="article_times" property="articleTimes" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        article_id, article_title, article_short_title, article_category, column_category, article_order, article_keywords, article_summary, article_author, article_source, comment_enabled, comment_start, comment_end, article_logo, article_content, article_status, article_addtime, article_subtime, article_times
+    </sql>
+
+</mapper>

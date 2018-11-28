@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jelly.mybatis.mapper.UserMapper">
+        <resultMap id="userMap" type="com.jelly.mybatis.pojo.User">
+            <id column="id" property="id" javaType="Long" jdbcType="BIGINT"/>
+            <result column="user_name" property="userName"/>
+            <result column="cnname" property="cnname"/>
+            <result column="birthday" property="birthday"/>
+            <result column="sex" property="sex" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+            <result column="email" property="email"/>
+            <result column="mobile" property="mobile"/>
+            <result column="note" property="note"/>
+        </resultMap>
+    <select id="getUser" parameterType="long" resultMap="userMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_user
+        where id=#{id}
+    </select>
+    <sql id="Base_Column_List">
+        id,user_name,cnname,birthday,sex,email,mobile,note
+    </sql>
+    <insert id="insertUser" parameterType="com.jelly.mybatis.pojo.User" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user (user_name,cnname,birthday,sex,email,mobile,note)
+        values(#{userName},#{cnname},#{birthday},#{sex,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler},#{email},#{mobile},#{note})
+    </insert>
+</mapper>

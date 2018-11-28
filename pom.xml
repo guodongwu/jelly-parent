@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.jelly</groupId>
+    <artifactId>jelly-parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>jelly-basestudy</module>
+        <module>jelly-SSM/jelly-dao</module>
+        <module>jelly-SSM/jelly-service</module>
+        <module>jelly-SSM/jelly-domain</module>
+        <module>jelly-SSM/jelly-entity</module>
+        <module>jelly-mybatis-plus</module>
+        <module>jelly-SSM/jelly-config</module>
+        <module>jelly-SSM/jelly-utils</module>
+        <module>jelly-shiro</module>
+        <module>jelly-mybatis</module>
+        <module>jelly-spring</module>
+        <module>jelly-ehcache</module>
+        <module>jelly-json</module>
+        <module>jelly-xml</module>
+        <module>jelly-jfinal</module>
+        <module>jelly-activemq</module>
+        <module>jelly-zookeeper</module>
+        <module>jelly-redis</module>
+        <module>jelly-fastDFS</module>
+        <module>jelly-interview</module>
+        <module>jelly-qiniuyun</module>
+    </modules>
+    <packaging>pom</packaging>
+
+</project>

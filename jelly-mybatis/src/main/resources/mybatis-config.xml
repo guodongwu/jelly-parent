@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="jdbc.properties"/>
+    <settings>
+        <setting name="defaultExecutorType" value="BATCH"/>
+    </settings>
+    <typeAliases>
+        <typeAlias type="com.jelly.mybatis.pojo.Role" alias="role"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+                <property name="autoCommit" value="false"/>
+            </transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${druid.driver}"/>
+                <property name="url" value="${druid.url}"/>
+                <property name="username" value="${druid.username}"/>
+                <property name="password" value="${druid.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <package name="com.jelly.mybatis.mapper"/>
+       <!--
+       <mapper class="com.jelly.mybatis.mapper.StudentMapper"/>
+       <mapper resource="com/jelly/mybatis/mapper/RoleMapper.xml"/>
+       <mapper resource="com/jelly/mybatis/mapper/UserMapper.xml"/>
+       -->
+    </mappers>
+
+</configuration>

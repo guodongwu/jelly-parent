@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jelly.ssm.dao.RoleDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jelly.ssm.entity.Role">
+        <id column="role_id" property="roleId" />
+        <result column="name" property="name" />
+        <result column="title" property="title" />
+        <result column="description" property="description" />
+        <result column="ctime" property="ctime" />
+        <result column="orders" property="orders" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        role_id, name, title, description, ctime, orders
+    </sql>
+    <select id="roleList" resultMap="roleMap">
+        select
+        a.role_id,name,title,description,orders
+        from admin_role ar
+        join admin_user_role aur
+        on
+        ar.role_id=aur.role_id
+        where aur.user_id=#{userId}
+    </select>
+    <resultMap id="roleMap" type="com.jelly.ssm.entity.Role">
+        <id property="roleId" column="role_id"/>
+        <result column="name" property="name" />
+        <result column="title" property="title" />
+        <result column="description" property="description" />
+        <result column="ctime" property="ctime" />
+        <result column="orders" property="orders" />
+        <association property="userRole" javaType="com.jelly.ssm.entity.UserRole">
+            <id column="user_role_id" property="userRoleId" />
+            <result column="user_id" property="userId" />
+          <!--  <result column="role_id" property="roleId" />-->
+        </association>
+    </resultMap>
+</mapper>

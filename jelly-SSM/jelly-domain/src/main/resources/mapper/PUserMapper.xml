@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jelly.ssm.dao.PUserDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jelly.ssm.entity.PUser">
+        <id column="user_id" property="userId" />
+        <result column="user_name" property="userName" />
+        <result column="user_password" property="userPassword" />
+        <result column="user_sex" property="userSex" />
+        <result column="user_phone" property="userPhone" />
+        <result column="user_address" property="userAddress" />
+        <result column="user_salt" property="userSalt" />
+        <result column="user_birthday" property="userBirthday" />
+        <result column="user_age" property="userAge" />
+        <result column="user_email" property="userEmail" />
+        <result column="user_qq" property="userQq" />
+        <result column="user_wx_token" property="userWxToken" />
+        <result column="user_status" property="userStatus" />
+        <result column="user_last_login_time" property="userLastLoginTime" />
+        <result column="user_last_login_ip" property="userLastLoginIp" />
+        <result column="user_realname" property="userRealname" />
+        <result column="user_idcard" property="userIdcard" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_id, user_name, user_password, user_sex, user_phone, user_address, user_salt, user_birthday, user_age, user_email, user_qq, user_wx_token, user_status, user_last_login_time, user_last_login_ip, user_realname, user_idcard
+    </sql>
+
+</mapper>

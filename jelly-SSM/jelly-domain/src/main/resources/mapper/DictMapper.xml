@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jelly.ssm.dao.DictDao">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.jelly.ssm.entity.Dict">
+        <id column="dict_id" property="dictId" />
+        <result column="dict_key" property="dictKey" />
+        <result column="dict_value" property="dictValue" />
+        <result column="dict_name" property="dictName" />
+        <result column="dict_code" property="dictCode" />
+        <result column="dict_time" property="dictTime" />
+        <result column="dict_status" property="dictStatus" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        dict_id, dict_key, dict_value, dict_name, dict_code, dict_time, dict_status
+    </sql>
+
+</mapper>

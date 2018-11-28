@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jelly.mybatis.mapper.StudentMapper">
+     <resultMap id="studentMap" type="com.jelly.mybatis.pojo.Student">
+         <id property="studentId" column="student_id"/>
+         <result property="cnname" column="cnname"/>
+         <result property="sex" column="sex" javaType="com.jelly.mybatis.type.Sex" jdbcType="INTEGER" typeHandler="org.apache.ibatis.type.EnumOrdinalTypeHandler"/>
+         <result property="note" column="note"/>
+         <association property="studentSelfCard" column="student_id" select="com.jelly.mybatis.mapper.StudentSelfCardMapper.findStudentSelfCardByStudentId"/>
+         <collection property="studentLectures" column="student_id" select="com.jelly.mybatis.mapper.StudentLectureMapper.findStudentLectureByStudentId"/>
+        <discriminator javaType="int" column="sex">
+            <case value="1" resultMap="maleStudentMap"/>
+            <case value="0" resultMap="femaleStudentMap"/>
+        </discriminator>
+     </resultMap>
+    <select id="getStudent" parameterType="int" resultMap="studentMap">
+        select student_id,cnname,sex,note from student where student_id=#{studentId}
+    </select>
+    <resultMap id="maleStudentMap" type="com.jelly.mybatis.pojo.MaleStudentBean" extends="studentMap">
+        <collection property="studentHealthMaleBeanList" select="com.jelly.mybatis.mapper.StudentHealthMaleMapper.findStudentHealthMaleByStudentId" column="student_id"/>
+    </resultMap>
+    <resultMap id="femaleStudentMap" type="com.jelly.mybatis.pojo.FemaleStudentBean" extends="studentMap">
+        <collection property="studentHealthFemaleBeanList" select="com.jelly.mybatis.mapper.StudentHealthFemaleMapper.findStudentHealthFemaleByStudentId" column="student_id"/>
+    </resultMap>
+</mapper>

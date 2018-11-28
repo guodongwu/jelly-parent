@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="jelly-activemq" />
+        <module name="jelly-basestudy" />
+        <module name="jelly-config" />
+        <module name="jelly-dao" />
+        <module name="jelly-domain" />
+        <module name="jelly-ehcache" />
+        <module name="jelly-entity" />
+        <module name="jelly-fastDFS" />
+        <module name="jelly-interview" />
+        <module name="jelly-jfinal" />
+        <module name="jelly-json" />
+        <module name="jelly-mybatis" />
+        <module name="jelly-mybatis-plus" />
+        <module name="jelly-qiniuyun" />
+        <module name="jelly-redis" />
+        <module name="jelly-service" />
+        <module name="jelly-shiro" />
+        <module name="jelly-spring" />
+        <module name="jelly-springboot" />
+        <module name="jelly-utils" />
+        <module name="jelly-xml" />
+        <module name="jelly-zookeeper" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="jelly-mybatis-mysql" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jelly.mybatis.mapper.FileMapper">
+    <insert id="insertFile" keyProperty="id" useGeneratedKeys="true"
+             parameterType="com.jelly.mybatis.pojo.FileBean">
+        insert  into t_file(filearr)values(#{file})
+    </insert>
+    <select id="getFile" parameterType="long" resultType="com.jelly.mybatis.pojo.FileBean">
+        select id,filearr file from t_file
+    </select>
+</mapper>
