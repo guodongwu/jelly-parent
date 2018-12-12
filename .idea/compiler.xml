@@ -25,6 +25,7 @@
         <module name="jelly-service" />
         <module name="jelly-shiro" />
         <module name="jelly-spring" />
+        <module name="jelly-spring-batch" />
         <module name="jelly-springboot" />
         <module name="jelly-utils" />
         <module name="jelly-xml" />
