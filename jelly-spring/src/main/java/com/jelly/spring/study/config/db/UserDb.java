@@ -8,7 +8,7 @@ import java.util.List;
 public class UserDb {
     private  static List<User> userList=null;
     static {
-        userList=new ArrayList<>();
+        userList=new ArrayList<User>();
         for (int i=0;i<10;i++){
             userList.add(new User("user"+i,"password"+i));
         }
