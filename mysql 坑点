@@ -17,3 +17,5 @@
    end loop;
   3.repeat -- 循环开始
     until xx>yy end repeat;
+
+10 mysql 变量之坑，全局变量

@@ -25,7 +25,6 @@
         <module name="jelly-service" />
         <module name="jelly-shiro" />
         <module name="jelly-spring" />
-        <module name="jelly-spring-batch" />
         <module name="jelly-springboot" />
         <module name="jelly-utils" />
         <module name="jelly-xml" />
@@ -34,6 +33,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="jelly-mybatis-mysql" target="1.8" />
+      <module name="jelly-spring-batch" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
