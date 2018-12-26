@@ -13,6 +13,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/jelly-springboot/pom.xml" />
         <option value="$PROJECT_DIR$/jelly-spring-batch/pom.xml" />
+        <option value="$PROJECT_DIR$/jelly-esper/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
