@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jelly-activemq" />
+        <module name="jelly-algorithms" />
         <module name="jelly-basestudy" />
         <module name="jelly-config" />
         <module name="jelly-dao" />
