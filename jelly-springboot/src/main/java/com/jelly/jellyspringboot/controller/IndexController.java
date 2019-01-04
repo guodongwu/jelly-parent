@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
 
+
     @GetMapping(value = "/index",produces = "text/html;charset=UTF-8")
     public  String index(){
         return "index 哈哈哈";

@@ -12,8 +12,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class ControllerAop  {
     @Pointcut("execution(public * com.jelly.jellyspringboot.controller.*.*(..))")
     public void log(){}
