@@ -18,6 +18,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/jelly-kotlin/pom.xml" />
         <option value="$PROJECT_DIR$/jelly-mybatis-mysql/pom.xml" />
       </set>
     </option>

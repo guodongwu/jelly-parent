@@ -35,6 +35,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="jelly-kotlin" target="1.8" />
       <module name="jelly-mybatis-mysql" target="1.8" />
     </bytecodeTargetLevel>
   </component>

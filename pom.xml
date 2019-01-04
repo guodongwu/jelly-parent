@@ -29,7 +29,7 @@
         <module>jelly-fastDFS</module>
         <module>jelly-interview</module>
         <module>jelly-qiniuyun</module>
-        <module>jjelly-spring-batch</module>
+        <module>jelly-spring-batch</module>
         <module>jelly-algorithms</module>
     </modules>
     <packaging>pom</packaging>

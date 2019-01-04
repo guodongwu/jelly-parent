@@ -3,6 +3,7 @@
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
     <file url="file://$PROJECT_DIR$/jelly-SSM/jelly-domain" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jelly-basestudy" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jelly-kotlin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/jelly-springboot" charset="UTF-8" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
