@@ -26,4 +26,18 @@
         insert into t_user (user_name,cnname,birthday,sex,email,mobile,note)
         values(#{userName},#{cnname},#{birthday},#{sex,typeHandler=org.apache.ibatis.type.EnumOrdinalTypeHandler},#{email},#{mobile},#{note})
     </insert>
+    <insert id="insertUserList" parameterType="java.util.List" useGeneratedKeys="true">
+        insert into t_user(user_name,cnname,birthday,email,mobile,note)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+              #{item.userName},
+              #{item.cnname},
+              #{item.birthday},
+              #{item.email},
+              #{item.mobile},
+              #{item.note}
+            )
+        </foreach>
+    </insert>
 </mapper>

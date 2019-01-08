@@ -25,4 +25,39 @@
         log_id, description, username, start_time, spend_time, base_path, uri, url, method, parameter, user_agent, ip, result, permissions
     </sql>
 
+    <insert id="insertBatch" useGeneratedKeys="true" parameterType="java.util.List">
+        insert into admin_log(
+        description,
+        username,
+        start_time,
+        spend_time,
+        base_path,
+        uri,
+        url,
+        method,
+        parameter,
+        user_agent,
+        ip,
+        result,
+        permissions
+        )
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.description},
+            #{item.username},
+            #{item.startTime},
+            #{item.spendTime},
+            #{item.basePath},
+            #{item.uri},
+            #{item.url},
+            #{item.method},
+            #{item.parameter},
+            #{item.userAgent},
+            #{item.ip},
+            #{item.result},
+            #{item.permissions}
+            )
+        </foreach>
+    </insert>
 </mapper>

@@ -14,10 +14,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class Startup {
@@ -204,6 +201,37 @@ public class Startup {
             System.out.println(map.get("exec_date"));
 
         }catch(Exception ex){
+            sqlSession.rollback();
+        }finally {
+            if(sqlSession!=null){
+                sqlSession.close();
+            }
+        }
+    }
+
+    @Test
+    public  void testInsertList(){
+        SqlSession sqlSession=null;
+
+        try
+        {
+            sqlSession=SqlSessionFactoryUtil.openSqlSession(true);
+            UserMapper userMapper=sqlSession.getMapper(UserMapper.class);
+            List<User> users=new ArrayList<>();
+            for (int i=0;i<10;i++){
+                User user=new User();
+                user.setUserName("卡卡"+i);
+                user.setCnname("aaa"+i);
+                user.setBirthday(new Date());
+                user.setNote("testNote"+i);
+                user.setEmail("email"+i);
+                user.setMobile("1351817181"+i);
+                users.add(user);
+            }
+            userMapper.insertUserList(users);
+            sqlSession.commit();
+
+        }catch (Exception ex){
             sqlSession.rollback();
         }finally {
             if(sqlSession!=null){

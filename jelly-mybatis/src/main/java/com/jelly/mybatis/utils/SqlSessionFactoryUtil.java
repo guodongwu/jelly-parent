@@ -2,6 +2,7 @@ package com.jelly.mybatis.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -41,6 +42,12 @@ public class SqlSessionFactoryUtil {
             initSqlSessionFactory();
         }
         return  sqlSessionFactory.openSession();
+    }
+    public  static  SqlSession openSqlSession(Boolean isBatch){
+        if(sqlSessionFactory==null){
+            initSqlSessionFactory();
+        }
+        return  sqlSessionFactory.openSession(ExecutorType.BATCH,true);
     }
 
     /*public static  SqlSessionFactory initSqlSessionFactory2(){

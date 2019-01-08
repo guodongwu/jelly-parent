@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @SpringBootApplication
-@Configuration
-//@ImportResource(value = "classpath:beans.xml")
+
 public class JellySpringbootApplication {
 
     public static void main(String[] args) {

@@ -2,6 +2,8 @@ package com.jelly.ssm.dao;
 
 import com.jelly.ssm.entity.Log;
 
+import java.util.List;
+
 
 /**
  * <p>
@@ -13,4 +15,5 @@ import com.jelly.ssm.entity.Log;
  */
 public interface LogDao extends BaseMapper<Log,Integer> {
 
+    public void insertBatch(List<Log> list);
 }

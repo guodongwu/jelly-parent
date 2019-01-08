@@ -22,6 +22,7 @@
         <module name="jelly-json" />
         <module name="jelly-mybatis" />
         <module name="jelly-mybatis-plus" />
+        <module name="jelly-oauth2" />
         <module name="jelly-qiniuyun" />
         <module name="jelly-redis" />
         <module name="jelly-service" />
