@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--将div 里面的文本内容设置为-->
+<div th:text="${hello}" th:class="title"></div>
+<div style="line-break: strict;width: 100%;text-underline: black;border-bottom-width: thin;">=============</div>
+<div style="text-align: left;">
+    <div th:if="${prod}!=null">
+        <div th:text="${prod.id+'|'+prod.name+'|'+prod.price+'|'+(prod.inStock?'出售中':'已售罄')}">${prod.name}</div>
+        <!--操蛋的表达式-->
+        <div th:switch="${prod.id}">
+            <div th:case="2">穷逼</div>
+            <div th:case="4">穷逼vip (充值送的那种)</div>
+            <div th:case="6">vip</div>
+            <div th:case="8">svip</div>
+            <div th:case="*">Unkown</div>
+        </div>
+        <div th:if="${prod.price} ge 0 and ${prod.price} le 2">来俩</div>
+        <div th:if="${prod.price} gt 2 and ${prod.price} le 4">一般</div>
+        <div th:if="${prod.price} gt 4 and ${prod.price} le 6">操!贵呀</div>
+        <div th:if="${prod.price} gt 6">买不起</div>
+        <a th:href="@{/thymeleaf/index}">返回List</a>
+    </div>
+</div>
+<div th:if="${product}!=null">
+<table width="100%" style="text-align:left;">
+    <thead><th>ID</th><th>名称</th><th>价格</th><th>是否有货</th></thead>
+    <tbody><tr th:each="product:${product}">
+        <!--替换|-->
+        <td><a th:href="@{|/thymeleaf/index/${product.id}|}"   th:text="${product.id}"></a></td>
+        <td th:text="${product.name}"></td>
+        <td th:if="${product.price} gt 0 and ${product.price} lt 2" th:text="${product.price+'(便宜)'}"></td>
+        <td th:unless="${product.price} gt 0 and ${product.price} lt 2" th:text="${product.price}"></td>
+        <td th:if="${product.inStock}==true">
+            出售中..
+        </td>
+        <td th:if="${product.inStock}==false">
+            已售罄..
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
