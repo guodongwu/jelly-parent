@@ -32,6 +32,8 @@
         <module>jelly-spring-batch</module>
         <module>jelly-algorithms</module>
         <module>jelly-oauth2</module>
+        <module>jelly-esper</module>
+        <module>jelly-springboot</module>
     </modules>
     <packaging>pom</packaging>
 
