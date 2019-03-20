@@ -1,6 +1,5 @@
 package com.jelly.mybatis.mysql.util;
 
-import com.jelly.ssm.entity.Article;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.File;
@@ -29,7 +28,7 @@ public class ClassUtil {
         return  instance;
     }
     public Set<Class<?>> getClasses(String packageName){
-        Set<Class<?>> classes =new HashSet<>();
+        Set<Class<?>> classes =new HashSet<Class<?>>();
         boolean recursive=true;
         String packageDirName=packageName.replace(".","/");
         System.out.println(packageDirName);
@@ -134,7 +133,7 @@ public class ClassUtil {
     }
 
     public static void main(String[] args) {
-        Article article=new Article();
+        /*Article article=new Article();
         Set<Class<?>> clsList=ClassUtil.getInstance().getClasses("com.jelly.ssm.entity");
         if(clsList!=null && clsList.size()>0){
             for (Class<?> cls:clsList){
@@ -145,6 +144,6 @@ public class ClassUtil {
                     System.out.println(field.getName()+":"+field.getType());
                 }
             }
-        }
+        }*/
     }
 }

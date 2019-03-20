@@ -79,7 +79,7 @@ public class Startup {
         {
             sqlSession=SqlSessionFactoryUtil.openSqlSession();
             RoleMapper roleMapper=sqlSession.getMapper(RoleMapper.class);
-            Map<String,String> map=new HashMap<>();
+            Map<String,String> map=new HashMap<String,String>();
             map.put("roleName","test");
             List<Role> roles= roleMapper.findRoleByMap(map);
             roles.forEach(s-> System.out.println(s));

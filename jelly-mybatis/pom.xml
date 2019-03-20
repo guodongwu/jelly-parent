@@ -7,6 +7,9 @@
         <groupId>com.jelly</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <properties>
+        <generator.project.root>D:/code</generator.project.root>
+    </properties>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>jelly-mybatis</artifactId>
@@ -62,10 +65,20 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.7</version>
         </dependency>
-        <dependency>
+       <!-- <dependency>
             <groupId>com.jelly</groupId>
             <artifactId>jelly-entity</artifactId>
             <version>1.0-SNAPSHOT</version>
+        </dependency>-->
+        <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc14</artifactId>
+            <version>10.2.0.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+            <version>1.3.6</version>
         </dependency>
     </dependencies>
     <build>
@@ -80,5 +93,33 @@
                 </excludes>
             </resource>
         </resources>
+        <plugins>
+
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.6</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <overwrite>true</overwrite>
+                </configuration>
+                <!--<dependencies>
+                    &lt;!&ndash;使用自定义的类型（BigDecimal） 官方扯淡 还是封装为jar再引用，不然按照官方说法就是classpath不在一个路径下&ndash;&gt;
+                    <dependency>
+                        <groupId>org.mybatis</groupId>
+                        <artifactId>generator-user-defined</artifactId>
+                        <version>1.0-SNAPSHOT</version>
+                    </dependency>
+                </dependencies>-->
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
