@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryx.ryxpay.mapper.PayCustomerMapper">
+    <!--根据AgencyCode查询代理商客户信息-->
+    <select id="getPayCustomerByAgencyCode" parameterType="java.lang.String" resultType="com.ryx.ryxpay.entity.PayCustomer">
+        select customerid,username,customerpid,customeraddr,businesslicence from paycustomer
+        where customerid = #{agencyCode}
+    </select>
+    <!--根据AgencyCode查询代理商结算账户信息-->
+    <select id="getPayBindBankCardByAgencyCode" parameterType="java.lang.String" resultType="com.ryx.ryxpay.entity.PayBindBankCard2">
+        select customername,bankname,cardno,account_type from paybindbankcard2  where customerid = #{agencyCode}
+    </select>
+    <!--添加结算信息-->
+    <insert id="insertPayBindBankCard" parameterType="com.ryx.ryxpay.entity.PayBindBankCard2">
+        INSERT INTO paybindbankcard2 (customerid,cardidx,customername,bankname,cardno,account_type) VALUES (#{customerid},#{cardidx},#{customername},#{bankname},#{cardno},#{accountType})
+    </insert>
+</mapper>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ryx.ryxpay.mapper.RyxTermBrandMapper" >
+  <resultMap id="BaseResultMap" type="com.ryx.ryxpay.entity.RyxTermBrand" >
+    <result column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="NAME" property="name" jdbcType="VARCHAR" />
+    <result column="MERCHANT_SELECT" property="merchantSelect" jdbcType="CHAR" />
+    <result column="TERM_RATE" property="termRate" jdbcType="CHAR" />
+    <result column="TERM_PRICE" property="termPrice" jdbcType="CHAR" />
+    <result column="ICON" property="icon" jdbcType="VARCHAR" />
+    <result column="BRAND_NOTE" property="brandNote" jdbcType="VARCHAR" />
+    <result column="POLICY_NOTE" property="policyNote" jdbcType="VARCHAR" />
+    <result column="APP_USER" property="appUser" jdbcType="VARCHAR" />
+    <result column="INVITE_URL" property="inviteUrl" jdbcType="VARCHAR" />
+    <result column="CHANNEL_MERCH_ID" property="channelMerchId" jdbcType="VARCHAR" />
+    <result column="CHANNEL_AGENT_ID" property="channelAgentId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    ID, NAME, MERCHANT_SELECT, TERM_RATE, TERM_PRICE, ICON, BRAND_NOTE, POLICY_NOTE, 
+    APP_USER, INVITE_URL, CHANNEL_MERCH_ID, CHANNEL_AGENT_ID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.ryx.ryxpay.entity.RyxTermBrandExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from RYX_TERM_BRAND
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.ryx.ryxpay.entity.RyxTermBrandExample" >
+    delete from RYX_TERM_BRAND
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ryx.ryxpay.entity.RyxTermBrand" >
+    insert into RYX_TERM_BRAND (ID, NAME, MERCHANT_SELECT, 
+      TERM_RATE, TERM_PRICE, ICON, 
+      BRAND_NOTE, POLICY_NOTE, APP_USER, 
+      INVITE_URL, CHANNEL_MERCH_ID, CHANNEL_AGENT_ID
+      )
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{merchantSelect,jdbcType=CHAR}, 
+      #{termRate,jdbcType=CHAR}, #{termPrice,jdbcType=CHAR}, #{icon,jdbcType=VARCHAR}, 
+      #{brandNote,jdbcType=VARCHAR}, #{policyNote,jdbcType=VARCHAR}, #{appUser,jdbcType=VARCHAR}, 
+      #{inviteUrl,jdbcType=VARCHAR}, #{channelMerchId,jdbcType=VARCHAR}, #{channelAgentId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ryx.ryxpay.entity.RyxTermBrand" >
+    insert into RYX_TERM_BRAND
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="name != null" >
+        NAME,
+      </if>
+      <if test="merchantSelect != null" >
+        MERCHANT_SELECT,
+      </if>
+      <if test="termRate != null" >
+        TERM_RATE,
+      </if>
+      <if test="termPrice != null" >
+        TERM_PRICE,
+      </if>
+      <if test="icon != null" >
+        ICON,
+      </if>
+      <if test="brandNote != null" >
+        BRAND_NOTE,
+      </if>
+      <if test="policyNote != null" >
+        POLICY_NOTE,
+      </if>
+      <if test="appUser != null" >
+        APP_USER,
+      </if>
+      <if test="inviteUrl != null" >
+        INVITE_URL,
+      </if>
+      <if test="channelMerchId != null" >
+        CHANNEL_MERCH_ID,
+      </if>
+      <if test="channelAgentId != null" >
+        CHANNEL_AGENT_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantSelect != null" >
+        #{merchantSelect,jdbcType=CHAR},
+      </if>
+      <if test="termRate != null" >
+        #{termRate,jdbcType=CHAR},
+      </if>
+      <if test="termPrice != null" >
+        #{termPrice,jdbcType=CHAR},
+      </if>
+      <if test="icon != null" >
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="brandNote != null" >
+        #{brandNote,jdbcType=VARCHAR},
+      </if>
+      <if test="policyNote != null" >
+        #{policyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="appUser != null" >
+        #{appUser,jdbcType=VARCHAR},
+      </if>
+      <if test="inviteUrl != null" >
+        #{inviteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="channelMerchId != null" >
+        #{channelMerchId,jdbcType=VARCHAR},
+      </if>
+      <if test="channelAgentId != null" >
+        #{channelAgentId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ryx.ryxpay.entity.RyxTermBrandExample" resultType="java.lang.Integer" >
+    select count(*) from RYX_TERM_BRAND
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update RYX_TERM_BRAND
+    <set >
+      <if test="record.id != null" >
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.merchantSelect != null" >
+        MERCHANT_SELECT = #{record.merchantSelect,jdbcType=CHAR},
+      </if>
+      <if test="record.termRate != null" >
+        TERM_RATE = #{record.termRate,jdbcType=CHAR},
+      </if>
+      <if test="record.termPrice != null" >
+        TERM_PRICE = #{record.termPrice,jdbcType=CHAR},
+      </if>
+      <if test="record.icon != null" >
+        ICON = #{record.icon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.brandNote != null" >
+        BRAND_NOTE = #{record.brandNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.policyNote != null" >
+        POLICY_NOTE = #{record.policyNote,jdbcType=VARCHAR},
+      </if>
+      <if test="record.appUser != null" >
+        APP_USER = #{record.appUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.inviteUrl != null" >
+        INVITE_URL = #{record.inviteUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.channelMerchId != null" >
+        CHANNEL_MERCH_ID = #{record.channelMerchId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.channelAgentId != null" >
+        CHANNEL_AGENT_ID = #{record.channelAgentId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update RYX_TERM_BRAND
+    set ID = #{record.id,jdbcType=VARCHAR},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      MERCHANT_SELECT = #{record.merchantSelect,jdbcType=CHAR},
+      TERM_RATE = #{record.termRate,jdbcType=CHAR},
+      TERM_PRICE = #{record.termPrice,jdbcType=CHAR},
+      ICON = #{record.icon,jdbcType=VARCHAR},
+      BRAND_NOTE = #{record.brandNote,jdbcType=VARCHAR},
+      POLICY_NOTE = #{record.policyNote,jdbcType=VARCHAR},
+      APP_USER = #{record.appUser,jdbcType=VARCHAR},
+      INVITE_URL = #{record.inviteUrl,jdbcType=VARCHAR},
+      CHANNEL_MERCH_ID = #{record.channelMerchId,jdbcType=VARCHAR},
+      CHANNEL_AGENT_ID = #{record.channelAgentId,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

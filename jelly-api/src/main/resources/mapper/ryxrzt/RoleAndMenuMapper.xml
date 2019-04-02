@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryx.ryxrzt.mapper.RoleAndMenuMapper">
+  <resultMap id="BaseResultMap" type="com.ryx.ryxrzt.entity.RoleAndMenu">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="URL" jdbcType="VARCHAR" property="url" />
+    <result column="PID" jdbcType="VARCHAR" property="pid" />
+    <result column="PERMISSION" jdbcType="VARCHAR" property="permission" />
+    <result column="ICON_CLS" jdbcType="VARCHAR" property="iconCls" />
+    <result column="AVAILABLE" jdbcType="CHAR" property="available" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="SORT" jdbcType="DECIMAL" property="sort" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="ROLE_ID" jdbcType="VARCHAR" property="roleId" />
+    <result column="MENU_ID" jdbcType="VARCHAR" property="menuId" />
+    <result column="ACCESS_AUTH" jdbcType="VARCHAR" property="accessAuth" />
+  </resultMap>
+  
+  <select id="selectByRoleId" parameterType="com.ryx.ryxrzt.entity.RoleAndMenu" resultMap="BaseResultMap">
+    select 
+    	a.*,
+    	b.*,
+    	CASE when b.menu_id is not null then '1' else '0' end ACCESS_AUTH 
+    from sys_menu a
+	left join user_role_menu b
+	on a.id = b.menu_id and b.role_id =  #{roleId,jdbcType=VARCHAR}
+	where 1=1
+ 	<if test="pid != null">
+       and pid = #{pid,jdbcType=VARCHAR}
+     </if>
+  </select>
+  
+    <select id="selectPermissionByLoginName" parameterType="com.ryx.ryxrzt.entity.UserInfo" resultMap="BaseResultMap">
+        select d.* from user_info a
+        inner join user_role b
+        on a.ROLE_ID = b.id
+        inner join USER_ROLE_MENU c
+        on b.id =  c.ROLE_ID
+        inner join sys_menu  d
+        on c.MENU_ID = d.id
+        where 1=1
+        <if test="loginName != null">
+            and a.LOGIN_NAME = #{loginName,jdbcType=VARCHAR}
+        </if>
+
+        <if test="id != null">
+            and d.pid = #{id,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+    <select id="selectPermissionByLoginNameForCustomer" parameterType="com.ryx.ryxrzt.entity.UserInfo" resultMap="BaseResultMap">
+        select d.* from rzt_agency a
+        inner join user_role b
+        on a.ROLE_ID = b.id
+        inner join USER_ROLE_MENU c
+        on b.id =  c.ROLE_ID
+        inner join sys_menu  d
+        on c.MENU_ID = d.id
+        where 1=1
+        <if test="loginName != null">
+            and a.mobile = #{loginName,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+
+</mapper>

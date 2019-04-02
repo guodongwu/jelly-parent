@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryx.ryxrzt.mapper.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.ryx.ryxrzt.entity.Menu">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="NAME" jdbcType="VARCHAR" property="name" />
+    <result column="URL" jdbcType="VARCHAR" property="url" />
+    <result column="PID" jdbcType="VARCHAR" property="pid" />
+    <result column="PERMISSION" jdbcType="VARCHAR" property="permission" />
+    <result column="ICON_CLS" jdbcType="VARCHAR" property="iconCls" />
+    <result column="AVAILABLE" jdbcType="CHAR" property="available" />
+    <result column="TYPE" jdbcType="VARCHAR" property="type" />
+    <result column="SORT" jdbcType="DECIMAL" property="sort" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+    <result column="LOG_AVAILABLE" jdbcType="CHAR" property="logAvailable" />
+    <result column="REQ_LOG" jdbcType="CHAR" property="reqLog" />
+    <result column="REP_LOG" jdbcType="CHAR" property="repLog" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, NAME, URL, PID, PERMISSION, ICON_CLS, AVAILABLE, TYPE, SORT, STATE, REMARK, LOG_AVAILABLE, 
+    REQ_LOG, REP_LOG
+  </sql>
+  <select id="selectByExample" parameterType="com.ryx.ryxrzt.entity.MenuExample" resultMap="BaseResultMap">
+    
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from SYS_MENU
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_MENU
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from SYS_MENU
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.ryx.ryxrzt.entity.MenuExample">
+    delete from SYS_MENU
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.ryx.ryxrzt.entity.Menu">
+    insert into SYS_MENU (ID, NAME, URL, 
+      PID, PERMISSION, ICON_CLS, 
+      AVAILABLE, TYPE, SORT, 
+      STATE, REMARK, LOG_AVAILABLE, 
+      REQ_LOG, REP_LOG)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}, 
+      #{pid,jdbcType=VARCHAR}, #{permission,jdbcType=VARCHAR}, #{iconCls,jdbcType=VARCHAR}, 
+      #{available,jdbcType=CHAR}, #{type,jdbcType=VARCHAR}, #{sort,jdbcType=DECIMAL}, 
+      #{state,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{logAvailable,jdbcType=CHAR}, 
+      #{reqLog,jdbcType=CHAR}, #{repLog,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ryx.ryxrzt.entity.Menu">
+    insert into SYS_MENU
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="name != null">
+        NAME,
+      </if>
+      <if test="url != null">
+        URL,
+      </if>
+      <if test="pid != null">
+        PID,
+      </if>
+      <if test="permission != null">
+        PERMISSION,
+      </if>
+      <if test="iconCls != null">
+        ICON_CLS,
+      </if>
+      <if test="available != null">
+        AVAILABLE,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="sort != null">
+        SORT,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+      <if test="logAvailable != null">
+        LOG_AVAILABLE,
+      </if>
+      <if test="reqLog != null">
+        REQ_LOG,
+      </if>
+      <if test="repLog != null">
+        REP_LOG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="iconCls != null">
+        #{iconCls,jdbcType=VARCHAR},
+      </if>
+      <if test="available != null">
+        #{available,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="logAvailable != null">
+        #{logAvailable,jdbcType=CHAR},
+      </if>
+      <if test="reqLog != null">
+        #{reqLog,jdbcType=CHAR},
+      </if>
+      <if test="repLog != null">
+        #{repLog,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.ryx.ryxrzt.entity.MenuExample" resultType="java.lang.Long">
+    select count(*) from SYS_MENU
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update SYS_MENU
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        NAME = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.url != null">
+        URL = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pid != null">
+        PID = #{record.pid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.permission != null">
+        PERMISSION = #{record.permission,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iconCls != null">
+        ICON_CLS = #{record.iconCls,jdbcType=VARCHAR},
+      </if>
+      <if test="record.available != null">
+        AVAILABLE = #{record.available,jdbcType=CHAR},
+      </if>
+      <if test="record.type != null">
+        TYPE = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sort != null">
+        SORT = #{record.sort,jdbcType=DECIMAL},
+      </if>
+      <if test="record.state != null">
+        STATE = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null">
+        REMARK = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.logAvailable != null">
+        LOG_AVAILABLE = #{record.logAvailable,jdbcType=CHAR},
+      </if>
+      <if test="record.reqLog != null">
+        REQ_LOG = #{record.reqLog,jdbcType=CHAR},
+      </if>
+      <if test="record.repLog != null">
+        REP_LOG = #{record.repLog,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update SYS_MENU
+    set ID = #{record.id,jdbcType=VARCHAR},
+      NAME = #{record.name,jdbcType=VARCHAR},
+      URL = #{record.url,jdbcType=VARCHAR},
+      PID = #{record.pid,jdbcType=VARCHAR},
+      PERMISSION = #{record.permission,jdbcType=VARCHAR},
+      ICON_CLS = #{record.iconCls,jdbcType=VARCHAR},
+      AVAILABLE = #{record.available,jdbcType=CHAR},
+      TYPE = #{record.type,jdbcType=VARCHAR},
+      SORT = #{record.sort,jdbcType=DECIMAL},
+      STATE = #{record.state,jdbcType=VARCHAR},
+      REMARK = #{record.remark,jdbcType=VARCHAR},
+      LOG_AVAILABLE = #{record.logAvailable,jdbcType=CHAR},
+      REQ_LOG = #{record.reqLog,jdbcType=CHAR},
+      REP_LOG = #{record.repLog,jdbcType=CHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ryx.ryxrzt.entity.Menu">
+    update SYS_MENU
+    <set>
+      <if test="name != null">
+        NAME = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        URL = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="pid != null">
+        PID = #{pid,jdbcType=VARCHAR},
+      </if>
+      <if test="permission != null">
+        PERMISSION = #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="iconCls != null">
+        ICON_CLS = #{iconCls,jdbcType=VARCHAR},
+      </if>
+      <if test="available != null">
+        AVAILABLE = #{available,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        TYPE = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        SORT = #{sort,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="logAvailable != null">
+        LOG_AVAILABLE = #{logAvailable,jdbcType=CHAR},
+      </if>
+      <if test="reqLog != null">
+        REQ_LOG = #{reqLog,jdbcType=CHAR},
+      </if>
+      <if test="repLog != null">
+        REP_LOG = #{repLog,jdbcType=CHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ryx.ryxrzt.entity.Menu">
+    update SYS_MENU
+    set NAME = #{name,jdbcType=VARCHAR},
+      URL = #{url,jdbcType=VARCHAR},
+      PID = #{pid,jdbcType=VARCHAR},
+      PERMISSION = #{permission,jdbcType=VARCHAR},
+      ICON_CLS = #{iconCls,jdbcType=VARCHAR},
+      AVAILABLE = #{available,jdbcType=CHAR},
+      TYPE = #{type,jdbcType=VARCHAR},
+      SORT = #{sort,jdbcType=DECIMAL},
+      STATE = #{state,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      LOG_AVAILABLE = #{logAvailable,jdbcType=CHAR},
+      REQ_LOG = #{reqLog,jdbcType=CHAR},
+      REP_LOG = #{repLog,jdbcType=CHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

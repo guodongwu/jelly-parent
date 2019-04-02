@@ -15,7 +15,6 @@
         <module>jelly-SSM/jelly-entity</module>
         <module>jelly-mybatis-plus</module>
         <module>jelly-SSM/jelly-config</module>
-        <module>jelly-SSM/jelly-utils</module>
         <module>jelly-shiro</module>
         <module>jelly-mybatis</module>
         <module>jelly-spring</module>
@@ -35,6 +34,7 @@
         <module>jelly-esper</module>
         <module>jelly-springboot</module>
         <module>jelly-utils</module>
+        <module>jelly-api</module>
     </modules>
     <packaging>pom</packaging>
 

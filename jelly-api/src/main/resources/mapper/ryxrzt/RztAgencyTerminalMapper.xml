@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ryx.ryxrzt.mapper.RztAgencyTerminalMapper">
+	<select id="getRztBranchInfoList" resultType="com.ryx.ryxrzt.vo.RztBranchVo" parameterType="map" >
+		select rb.branchid branchId, rb.name branchName from rzt_branch rb order by rb.branchid
+	</select>
+	<select id="getRztAgencyTerminalInfoList" resultType="com.ryx.ryxrzt.vo.RztAgencyTerminalInfoVo" parameterType="map" >
+  		select rat.branchid branchId,
+  			   rb.appuser appUser,
+  			   rb.name branchName,
+		       rbt.name terminalBatchName,
+		       ra.agency_name agencyName,
+		       rat.psam_id terminalNo,
+		       decode(rat.status, '0', '未激活', '1', '已绑定', '2', '已激活', '') terminalStatus,
+		       rat.active_mobile merchantPhone,
+		       rat.transfer_date transferDate,
+		       rat.active_date activeDate,
+		       rat.active_username merchantName,
+		       decode(rat.active_status, '0', '是', '否') isCashback,
+		       rat.active_date cashbackTime,
+		       decode(rat.active_status, '0', '', rem.remark) cashbackFailReason
+		  from rzt_agency_terminal rat
+		  left join rzt_branch rb
+		    on rat.branchid = rb.branchid
+		  left join rzt_batch rbt
+		    on rat.batch_id = rbt.batch_id
+		   and rat.branchid = rbt.branchid
+		  left join rzt_agency_info rai
+		    on rat.agency_id = rai.agency_id
+		  left join rzt_agency ra
+		    on rai.agency_code = ra.agency_code
+		  left join rzt_activa_type rem
+		    on rat.active_status = rem.id
+		 where 1=1
+		 	   <if test="branchId != null and branchId != ''">
+			   		and rat.branchid = #{branchId}
+			   </if>
+		       <if test="terminalNo != null and terminalNo != ''">
+			   		and rat.psam_id = #{terminalNo}
+			   </if>
+			   <if test="activeDateStart != null and activeDateStart != ''">
+			   		<![CDATA[and rat.active_date >= #{activeDateStart}]]>
+			   </if>
+			   <if test="activeDateEnd != null and activeDateEnd != ''">
+			   		<![CDATA[and rat.active_date <= #{activeDateEnd}]]>
+			   </if>
+			   <if test="agencyName != null and agencyName != ''">
+			   		and ra.agency_name like #{agencyName}
+			   </if>
+			   <if test="terminalStatus != null and terminalStatus != ''">
+			   		and rat.status = #{terminalStatus}
+			   </if>	       
+    </select>
+    <select id="getRztAgencyTerminalInfoByTerminalNo" resultType="com.ryx.ryxrzt.vo.RztAgencyTerminalInfoVo" parameterType="map" >
+		select rat.branchid branchId,
+  			   rb.appuser appUser,
+			   rb.name branchName,
+		       rbt.name terminalBatchName,
+		       ra.agency_name agencyName,
+		       r.name terminalPolicyName,
+		       rat.psam_id terminalNo,
+		       decode(rat.status, '0', '未激活', '1', '已绑定', '2', '已激活', '') terminalStatus,
+		       rat.active_mobile merchantPhone,
+		       rat.transfer_date transferDate,
+		       rat.active_date activeDate,
+		       rat.active_username merchantName,
+		       decode(rat.active_status, '0', '是', '否') isCashback,
+		       rat.price returnAmount,
+		       rat.active_date cashbackTime,
+		       decode(rat.active_status, '0', '', rem.remark) cashbackFailReason
+		  from rzt_agency_terminal rat
+		  left join rzt_branch rb
+		    on rat.branchid = rb.branchid
+		  left join rzt_batch rbt
+		    on rat.batch_id = rbt.batch_id
+		   and rat.branchid = rbt.branchid
+		  left join rzt_agency_info rai
+		    on rat.agency_id = rai.agency_id
+		  left join rzt_agency ra
+		    on rai.agency_code = ra.agency_code
+		  left join rzt_activa_type rem
+		    on rat.active_status = rem.id
+		  left join ryxpay.paypsam p
+		    on rat.psam_id = p.psamid
+		  left join ryxpay.ryx_term_pledge_rule r
+		    on p.bus_type = r.id
+		   and p.term_brand_id = r.term_brand_id
+		 where rat.psam_id = #{terminalNo}
+	</select>
+	<select id="getRztOneLevelAgencyAndDirectAgencyByBranch" resultType="com.ryx.ryxrzt.vo.AgencyInfoVo" parameterType="map" >
+		select agencyunion.agency_id   agencyId,
+		       agencyunion.agency_name agencyName,
+		       agencyunion.mobile      mobile
+		  from (select rai.agency_id,
+		               ra.agency_name,
+		               rai.mobile,
+		               rai.agency_code,
+		               rai.parent_agency_id,
+		               rai.create_date
+		          from rzt_agency_info rai
+		         inner join rzt_agency ra
+		            on rai.agency_code = ra.agency_code
+		         where rai.direct = '1'
+		           and rai.level_type != '10A'
+		           and rai.branchid = #{branchId}
+		        union
+		        select rai.agency_id,
+		               ra.agency_name,
+		               rai.mobile,
+		               rai.agency_code,
+		               rai.parent_agency_id,
+		               rai.create_date
+		          from rzt_agency_info rai
+		         inner join rzt_agency ra
+		            on rai.agency_code = ra.agency_code
+		         where rai.direct != 1
+		           and rai.parent_agency_id = #{agencyId}) agencyunion
+		 where exists (select ram.agency_id
+		          from rzt_agency_mould ram
+		         where ram.rulerem = '0'
+		           and ram.status in ('1', '0')
+		           and ram.agency_id = agencyunion.agency_id)
+		       <if test="agencyName != null and agencyName != ''">
+			   		and (agencyunion.agency_name like '%' || #{agencyName} || '%' or
+		       agencyunion.mobile like '%' || #{agencyName} || '%')
+			   </if>
+		 order by agencyunion.create_date
+	</select>
+	<select id="getRztTerminalNoPrefixByBranch" resultType="string" parameterType="map" >
+		select rp.val from rzt_params rp where rp.id = #{rztParamId}
+	</select>
+	<select id="getRztAgencyInfoListByLevelType" resultType="com.ryx.ryxrzt.vo.AgencyInfoVo" parameterType="map" >
+		select rai.agency_id agencyId, rai.mobile mobile, ra.agency_name agencyName
+		  from rzt_agency_info rai
+		  left join rzt_agency ra
+		    on rai.agency_code = ra.agency_code
+		 where rai.level_type = #{levelType}
+	</select>
+	<select id="getRztTerminalBatchAllotListByCondition" resultType="com.ryx.ryxrzt.vo.RztTerminalBatchAllotVo"
+		 parameterType="map" >
+		select rtba.allot_batch_id allotBatchId,
+		       rb.name branchName,
+		       decode(rtba.allot_direction,
+		              '10A',
+		              rafrom.agency_name,
+		              '10B',
+		              rato.agency_name,
+		              '') branchAgencyName,
+		       decode(rtba.allot_direction,
+		              '10A',
+		              rato.agency_name,
+		              '10B',
+		              rafrom.agency_name,
+		              '') agencyName,
+		       decode(rtba.allot_direction, '10A', '下发', '10B', '回拨', '') allotDirection,
+		       rtba.allot_num allotNum,
+		       rtba.allot_time allotTime
+		  from rzt_terminal_batch_allot rtba
+		  left join rzt_agency_info raifrom
+		    on rtba.agency_id_from = raifrom.agency_id
+		  left join rzt_agency rafrom
+		    on raifrom.agency_code = rafrom.agency_code
+		  left join rzt_branch rb
+		    on rtba.terminal_branch_id = rb.branchid
+		  left join rzt_agency_info raito
+		    on rtba.agency_id_to = raito.agency_id
+		  left join rzt_agency rato
+		    on raito.agency_code = rato.agency_code
+		 where 1=1 
+		 	<if test="terminalBranchId != null and terminalBranchId != ''">
+		 		and rtba.terminal_branch_id = #{terminalBranchId}
+		 	</if>
+		 	<if test="branchAgencyId != null and branchAgencyId != ''">
+		 		and decode(rtba.allot_direction,
+		              '10A',
+		              raifrom.agency_id,
+		              '10B',
+		              raito.agency_id,
+		              '') = #{branchAgencyId}
+		 	</if>
+			<if test="allotTimeStart != null and allotTimeStart != ''">
+				<![CDATA[and rtba.allot_time >= #{allotTimeStart}]]>
+			</if>
+			<if test="allotTimeEnd != null and allotTimeEnd != ''">
+				<![CDATA[and rtba.allot_time <= #{allotTimeEnd}]]>
+			</if>
+            <if test="agencyName != null and agencyName != ''">
+           		and decode(rtba.allot_direction,
+		              '10A',
+		              rato.agency_name,
+		              '10B',
+		              rafrom.agency_name,
+		              '') = #{agencyName}
+		    </if>
+	</select>
+</mapper>
