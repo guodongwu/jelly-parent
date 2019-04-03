@@ -9,6 +9,7 @@ import com.jelly.esper.listener.EmployeeListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class EmployeeApp {
@@ -29,7 +30,14 @@ public class EmployeeApp {
             employee.setSalary(2000+i*1000);
             runtime.sendEvent(employee);
         }
-
+        List<Employee> employees=EmployeeListener.employees;
+        if(!employees.isEmpty()){
+            employees.forEach(s-> System.out.println(s.getName()+":"+s.getSalary()));
+        }
+        Map<String,Object> maps=EmployeeListener.salaryMap;
+        if(!maps.isEmpty()){
+           maps.forEach((k,v)-> System.out.println(k+":"+v));
+        }
 
         String epl2="select name,age,children,address from "+Person.class.getName()+" where name like '%lue%'";
         statement =administrator.createEPL(epl2);
