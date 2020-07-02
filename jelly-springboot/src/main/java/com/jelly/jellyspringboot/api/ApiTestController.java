@@ -8,14 +8,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Objects;
+
 @RestController
 @RequestMapping("/api")
 public class ApiTestController {
     @ApiOperation(value = "测试post请求",notes = "注意事项")
     @ApiImplicitParam(dataType = "User",name ="user",value = "用户信息",required = true)
-    @PostMapping("/testPost")
-    public  String testPost(@RequestBody User user){
-        return "success";
+    @RequestMapping("/testPost")
+    public  User testPost(User user){
+        if(user!=null && Objects.nonNull(user.getName()))
+            return user;
+        return new User().buildName("biubiu").buildPassword("111");
     }
 
 

@@ -34,7 +34,8 @@
         <module>jelly-esper</module>
         <module>jelly-springboot</module>
         <module>jelly-utils</module>
-        <module>jelly-api</module>
+        <module>jelly-smt</module>
+        <module>jelly-quartz</module>
     </modules>
     <packaging>pom</packaging>
 

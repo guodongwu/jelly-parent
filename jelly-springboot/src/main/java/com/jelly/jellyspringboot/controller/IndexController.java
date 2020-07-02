@@ -11,7 +11,7 @@ public class IndexController {
 
     @GetMapping(value = "/index",produces = "text/html;charset=UTF-8")
     public  String index(){
-        return "index 哈哈哈";
+        return "index 嘿嘿嘿";
     }
 
     @GetMapping("/user/{id}")

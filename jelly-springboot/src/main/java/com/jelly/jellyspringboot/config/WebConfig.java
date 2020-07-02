@@ -2,6 +2,13 @@ package com.jelly.jellyspringboot.config;
 
 import com.jelly.jellyspringboot.interceptor.MyInterceptor;
 import org.apache.activemq.command.ActiveMQQueue;
+import org.apache.catalina.Context;
+import org.apache.catalina.connector.Connector;
+import org.apache.coyote.http11.Http11NioProtocol;
+import org.apache.tomcat.util.descriptor.web.SecurityCollection;
+import org.apache.tomcat.util.descriptor.web.SecurityConstraint;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,8 +21,6 @@ import java.util.List;
 
 @Configuration
 public class WebConfig extends WebMvcConfigurationSupport {
-
-
     @Bean
     public MyInterceptor myInterceptor(){
         return new MyInterceptor();

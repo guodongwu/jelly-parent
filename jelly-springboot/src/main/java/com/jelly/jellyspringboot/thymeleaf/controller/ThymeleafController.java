@@ -21,6 +21,7 @@ public class ThymeleafController {
         map.put("hello","List");
         List<Product> productList=  productService.findAll();
         map.put("product",productList);
+
         return "/thymeleaf/index";
     }
     @GetMapping("/index/{id}")
