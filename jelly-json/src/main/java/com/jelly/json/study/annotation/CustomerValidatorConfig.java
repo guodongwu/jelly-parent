@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class CustomerValidatorConfig implements ApplicationContextAware {
-    private Map<Annotation,CustomerValidatorRule> rules=new ConcurrentHashMap<>();
+    private Map<Annotation,CustomerValidatorRule> rules=new ConcurrentHashMap<Annotation,CustomerValidatorRule>();
     Map<String,Object>  customerValidationRules=null;
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {

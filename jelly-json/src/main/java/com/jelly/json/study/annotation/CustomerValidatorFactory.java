@@ -49,7 +49,7 @@ public class CustomerValidatorFactory implements Validator {
     }
 
     private List<Field> getFields(Class<?> aClass) {
-        List<Field> fields=new ArrayList<>();
+        List<Field> fields=new ArrayList<Field>();
         while (aClass!=null){
             Collections.addAll(fields,aClass.getDeclaredFields());
             aClass=aClass.getSuperclass();

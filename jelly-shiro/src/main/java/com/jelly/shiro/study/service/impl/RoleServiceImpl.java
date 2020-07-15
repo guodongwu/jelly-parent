@@ -17,7 +17,7 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Override
-    public Role createRole(Role role) {
+    public Role createRole(final Role role) {
         final String sql="insert into t_role(role,description,available)values(?,?,?)";
         GeneratedKeyHolder keyHolder=new GeneratedKeyHolder();
         jdbcTemplate.update(new PreparedStatementCreator() {

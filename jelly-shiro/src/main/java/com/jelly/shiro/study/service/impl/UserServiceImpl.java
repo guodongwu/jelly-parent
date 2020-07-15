@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Override
-    public User createUser(User user) {
+    public User createUser(final User user) {
         final String sql="insert into t_user(username, password, salt, locked) values(?,?,?, ?)";
         GeneratedKeyHolder keyHolder=new GeneratedKeyHolder();
         jdbcTemplate.update(new PreparedStatementCreator() {

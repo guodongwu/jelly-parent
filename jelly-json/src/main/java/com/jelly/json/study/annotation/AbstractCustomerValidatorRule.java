@@ -15,7 +15,7 @@ public abstract class AbstractCustomerValidatorRule implements CustomerValidator
     public abstract boolean support(Annotation annotation);
 
     @Override
-    public void valid(Annotation annotation, Object object, Field field, Errors errors) throws InvocationTargetException, IllegalAccessException {
+    public void valid(Annotation annotation, Object object, final Field field, final Errors errors) throws InvocationTargetException, IllegalAccessException {
         preHandle(annotation,object,field,errors);
         PropertyDescriptor propertyDescriptor= BeanUtils.getPropertyDescriptor(object.getClass(),field.getName());
         Method reader=propertyDescriptor.getReadMethod();

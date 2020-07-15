@@ -17,7 +17,7 @@ public class PermissionServiceImpl implements PermissionService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Override
-    public Permission createPermission(Permission permission) {
+    public Permission createPermission(final Permission permission) {
         final String sql="insert into t_permission(permission,description,avaiable) values(?,?,?)";
         GeneratedKeyHolder keyHolder=new GeneratedKeyHolder();
         jdbcTemplate.update(new PreparedStatementCreator() {
