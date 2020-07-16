@@ -65,11 +65,11 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.7</version>
         </dependency>
-       <!-- <dependency>
-            <groupId>com.jelly</groupId>
-            <artifactId>jelly-entity</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>-->
+        <!-- <dependency>
+             <groupId>com.jelly</groupId>
+             <artifactId>jelly-entity</artifactId>
+             <version>1.0-SNAPSHOT</version>
+         </dependency>-->
         <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc14</artifactId>
@@ -120,6 +120,36 @@
                     <target>8</target>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>aliyun</id>
+            <name>aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>aliyun</id>
+            <name>aliyun</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 </project>

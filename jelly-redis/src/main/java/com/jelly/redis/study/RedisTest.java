@@ -76,7 +76,7 @@ public class RedisTest {
         System.out.println("2:"+redisUtils.get("keyNum"));
         redisUtils.append("strKey4",redisUtils.get("keyNum"));
         System.out.println(redisUtils.get("strKey4")+",Key strKey size:"+redisUtils.size("strKey4"));
-        Map<String,String> maps=new HashMap<String,String>();
+        Map<String,String> maps=new HashMap<>();
         maps.put("a","a");
         maps.put("b","b");
         maps.put("c","c");

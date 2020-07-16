@@ -20,7 +20,7 @@ public class GsonTest {
         personBean.setIdCard("11111111");
         personBean.setMarried(true);
         personBean.setName("abcv");
-        List<FemaleBean> femaleBeans=new ArrayList<FemaleBean>();
+        List<FemaleBean> femaleBeans=new ArrayList<>();
 
         FemaleBean femaleBean=new FemaleBean();
         femaleBean.setId(1);

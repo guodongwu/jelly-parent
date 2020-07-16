@@ -17,6 +17,7 @@ public class SimpleLineAggregator implements LineAggregator<String> {
         sb.append(",key"+ UUID.randomUUID());
         sb.append(","+s);
         sb.append(")");
+        System.out.println(sb.toString());
         return  sb.toString();
 
     }

@@ -38,10 +38,10 @@ public class BatchTest {
 
         //创建processor
         SimpleItemProcessor processor=new SimpleItemProcessor();
-      /*  //创建writer
+        //创建writer
         FlatFileItemWriter<String> flatFileItemWriter=new FlatFileItemWriter<String>();
         flatFileItemWriter.setResource(new FileSystemResource("jelly-spring-batch/src/main/resources/batch1.txt"));
-        flatFileItemWriter.setLineAggregator(new SimpleLineAggregator());*/
+        flatFileItemWriter.setLineAggregator(new SimpleLineAggregator());
 
         //创建step
         StepBuilderFactory stepBuilderFactory=new StepBuilderFactory(jobRepository,transactionManager);
@@ -49,7 +49,7 @@ public class BatchTest {
                 .<String,String>chunk(1)
                 .reader(flatFileItemReader)
                 .processor(processor)
-                //.writer(flatFileItemWriter)
+                .writer(flatFileItemWriter)
                 .build();
         JobBuilderFactory jobBuilderFactory=new JobBuilderFactory(jobRepository);
         Job job=jobBuilderFactory.get("job")
