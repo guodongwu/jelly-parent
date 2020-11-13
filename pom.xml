@@ -20,7 +20,7 @@
         <module>jelly-spring</module>
         <module>jelly-ehcache</module>
         <module>jelly-json</module>
-        <module>jelly-xml</module>
+        <module>jelly-file</module>
         <module>jelly-jfinal</module>
         <module>jelly-activemq</module>
         <module>jelly-zookeeper</module>

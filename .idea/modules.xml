@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/jelly-activemq/jelly-activemq.iml" filepath="$PROJECT_DIR$/jelly-activemq/jelly-activemq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-algorithms/jelly-algorithms.iml" filepath="$PROJECT_DIR$/jelly-algorithms/jelly-algorithms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-basestudy/jelly-basestudy.iml" filepath="$PROJECT_DIR$/jelly-basestudy/jelly-basestudy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-SSM/jelly-config/jelly-config.iml" filepath="$PROJECT_DIR$/jelly-SSM/jelly-config/jelly-config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-SSM/jelly-dao/jelly-dao.iml" filepath="$PROJECT_DIR$/jelly-SSM/jelly-dao/jelly-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-SSM/jelly-domain/jelly-domain.iml" filepath="$PROJECT_DIR$/jelly-SSM/jelly-domain/jelly-domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-ehcache/jelly-ehcache.iml" filepath="$PROJECT_DIR$/jelly-ehcache/jelly-ehcache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-SSM/jelly-entity/jelly-entity.iml" filepath="$PROJECT_DIR$/jelly-SSM/jelly-entity/jelly-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-esper/jelly-esper.iml" filepath="$PROJECT_DIR$/jelly-esper/jelly-esper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-fastDFS/jelly-fastDFS.iml" filepath="$PROJECT_DIR$/jelly-fastDFS/jelly-fastDFS.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-file/jelly-file.iml" filepath="$PROJECT_DIR$/jelly-file/jelly-file.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-interview/jelly-interview.iml" filepath="$PROJECT_DIR$/jelly-interview/jelly-interview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-jfinal/jelly-jfinal.iml" filepath="$PROJECT_DIR$/jelly-jfinal/jelly-jfinal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-json/jelly-json.iml" filepath="$PROJECT_DIR$/jelly-json/jelly-json.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-mybatis/jelly-mybatis.iml" filepath="$PROJECT_DIR$/jelly-mybatis/jelly-mybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-mybatis-plus/jelly-mybatis-plus.iml" filepath="$PROJECT_DIR$/jelly-mybatis-plus/jelly-mybatis-plus.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-oauth2/jelly-oauth2.iml" filepath="$PROJECT_DIR$/jelly-oauth2/jelly-oauth2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-parent.iml" filepath="$PROJECT_DIR$/jelly-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-qiniuyun/jelly-qiniuyun.iml" filepath="$PROJECT_DIR$/jelly-qiniuyun/jelly-qiniuyun.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-quartz/jelly-quartz.iml" filepath="$PROJECT_DIR$/jelly-quartz/jelly-quartz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-redis/jelly-redis.iml" filepath="$PROJECT_DIR$/jelly-redis/jelly-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-SSM/jelly-service/jelly-service.iml" filepath="$PROJECT_DIR$/jelly-SSM/jelly-service/jelly-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-shiro/jelly-shiro.iml" filepath="$PROJECT_DIR$/jelly-shiro/jelly-shiro.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-smt/jelly-smt.iml" filepath="$PROJECT_DIR$/jelly-smt/jelly-smt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-spring/jelly-spring.iml" filepath="$PROJECT_DIR$/jelly-spring/jelly-spring.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-spring-batch/jelly-spring-batch.iml" filepath="$PROJECT_DIR$/jelly-spring-batch/jelly-spring-batch.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-springboot/jelly-springboot.iml" filepath="$PROJECT_DIR$/jelly-springboot/jelly-springboot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-utils/jelly-utils.iml" filepath="$PROJECT_DIR$/jelly-utils/jelly-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jelly-zookeeper/jelly-zookeeper.iml" filepath="$PROJECT_DIR$/jelly-zookeeper/jelly-zookeeper.iml" />
+    </modules>
+  </component>
+</project>

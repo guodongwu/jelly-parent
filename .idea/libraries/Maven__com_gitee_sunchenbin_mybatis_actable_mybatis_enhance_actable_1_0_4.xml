@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.gitee.sunchenbin.mybatis.actable:mybatis-enhance-actable:1.0.4">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../repo/com/gitee/sunchenbin/mybatis/actable/mybatis-enhance-actable/1.0.4/mybatis-enhance-actable-1.0.4.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/../../repo/com/gitee/sunchenbin/mybatis/actable/mybatis-enhance-actable/1.0.4/mybatis-enhance-actable-1.0.4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../../repo/com/gitee/sunchenbin/mybatis/actable/mybatis-enhance-actable/1.0.4/mybatis-enhance-actable-1.0.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

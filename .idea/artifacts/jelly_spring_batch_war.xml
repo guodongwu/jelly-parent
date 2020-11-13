@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jelly-spring-batch:war">
+    <output-path>$PROJECT_DIR$/jelly-spring-batch/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>jelly-spring-batch</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="jelly-spring-batch-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="jelly-spring-batch:war exploded" />
+    </root>
+  </artifact>
+</component>

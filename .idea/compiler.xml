@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="jelly-fastDFS" />
+        <module name="jelly-interview" />
+        <module name="jelly-basestudy" />
+        <module name="jelly-activemq" />
+        <module name="jelly-oauth2" />
+        <module name="jelly-spring-batch" />
+        <module name="jelly-utils" />
+        <module name="jelly-quartz" />
+        <module name="jelly-redis" />
+        <module name="jelly-json" />
+        <module name="jelly-config" />
+        <module name="jelly-entity" />
+        <module name="jelly-jfinal" />
+        <module name="jelly-zookeeper" />
+        <module name="jelly-springboot" />
+        <module name="jelly-qiniuyun" />
+        <module name="jelly-file" />
+        <module name="jelly-shiro" />
+        <module name="jelly-esper" />
+        <module name="jelly-mybatis" />
+        <module name="jelly-algorithms" />
+        <module name="jelly-domain" />
+        <module name="jelly-mybatis-plus" />
+        <module name="jelly-smt" />
+        <module name="jelly-ehcache" />
+        <module name="jelly-service" />
+        <module name="jelly-spring" />
+        <module name="jelly-dao" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="jelly-activemq" target="1.5" />
+      <module name="jelly-algorithms" target="6" />
+      <module name="jelly-basestudy" target="1.8" />
+      <module name="jelly-config" target="1.5" />
+      <module name="jelly-dao" target="1.5" />
+      <module name="jelly-domain" target="1.8" />
+      <module name="jelly-ehcache" target="1.5" />
+      <module name="jelly-entity" target="1.5" />
+      <module name="jelly-esper" target="8" />
+      <module name="jelly-fastDFS" target="1.5" />
+      <module name="jelly-file" target="1.5" />
+      <module name="jelly-interview" target="1.5" />
+      <module name="jelly-jfinal" target="1.5" />
+      <module name="jelly-json" target="7" />
+      <module name="jelly-mybatis" target="8" />
+      <module name="jelly-mybatis-plus" target="1.5" />
+      <module name="jelly-oauth2" target="1.5" />
+      <module name="jelly-parent" target="1.5" />
+      <module name="jelly-qiniuyun" target="1.5" />
+      <module name="jelly-quartz" target="1.8" />
+      <module name="jelly-redis" target="8" />
+      <module name="jelly-service" target="1.5" />
+      <module name="jelly-shiro" target="7" />
+      <module name="jelly-smt" target="1.7" />
+      <module name="jelly-spring" target="1.5" />
+      <module name="jelly-spring-batch" target="1.5" />
+      <module name="jelly-springboot" target="1.8" />
+      <module name="jelly-utils" target="7" />
+      <module name="jelly-zookeeper" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="jelly-springboot" options="-parameters" />
+    </option>
+  </component>
+</project>
