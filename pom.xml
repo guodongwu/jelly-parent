@@ -36,6 +36,7 @@
         <module>jelly-utils</module>
         <module>jelly-smt</module>
         <module>jelly-quartz</module>
+        <module>jelly-dubbo-api</module>
     </modules>
     <packaging>pom</packaging>
 

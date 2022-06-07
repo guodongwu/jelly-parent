@@ -67,6 +67,16 @@ public class TestBean extends BaseBean {
         this.addTime = addTime;
     }
 
+    @Override
+    public String toString() {
+        return "TestBean{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", addTime=" + addTime +
+                ", iTer=" + iTer +
+                ", ex='" + ex + '\'' +
+                '}';
+    }
 
     @Test
     public  void Test() throws IntrospectionException, InvocationTargetException, IllegalAccessException {

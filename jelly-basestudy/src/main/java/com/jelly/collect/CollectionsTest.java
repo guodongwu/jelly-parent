@@ -1,11 +1,21 @@
 package com.jelly.collect;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class CollectionsTest {
     public static void main(String[] args) {
+
+        int[] a=new int[]{1,2,3,4,5,6};
+        final int[] b=a;
+        int[] c= Arrays.copyOf(a,a.length);
+        b[2]=7;
+        System.out.println(a[2]);
+        System.out.println(c[2]);
+
+
         List<Integer> list=new ArrayList<>();
         for(int i=0;i<9;i++){
             list.add(i);
