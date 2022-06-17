@@ -39,6 +39,7 @@
         <module>jelly-smt</module>
         <module>jelly-quartz</module>
         <module>jelly-dubbo-api</module>
+        <module>jelly-elasticsearch</module>
     </modules>
     <packaging>pom</packaging>
     <build>
